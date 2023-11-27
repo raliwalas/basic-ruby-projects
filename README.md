@@ -12,9 +12,8 @@ There’s a video about it from Harvard’s CS50 class[https://www.youtube.com/w
 
 Implement a caesar cipher that takes in a string and the shift factor and then outputs the modified string:
 ```
-> caesar_cipher("What a string!", 5)
-=> "Bmfy f xywnsl!"
-
+    > caesar_cipher("What a string!", 5)
+    => "Bmfy f xywnsl!"
 ```
 
 ### Quick Tips:
