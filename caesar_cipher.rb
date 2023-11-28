@@ -1,6 +1,9 @@
 
 # also using replit.com and irb to run things
 
+
+
+# FIXME - only works for lowercase phrases without spaces
 def caesar_cipher(phrase, shift_by)
 
     alphabet = ("a".."z").to_a
@@ -15,15 +18,15 @@ def caesar_cipher(phrase, shift_by)
       # reset the positioning from z to a
       if new_position > 25
         new_position = new_position - 26
-        phrase_arr[riginal_position] = alphabet[new_position]
+        phrase_arr[original_position] = alphabet[new_position]
       else 
-          phrase_arr[original_position] = alphabet[new_position]
+        phrase_arr[original_position] = alphabet[new_position]
       end
 
       phrase = phrase_arr.join
     end
   
-    return phrase_arr
+    return phrase
   
 =begin
 - returns a string back
