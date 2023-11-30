@@ -1,60 +1,63 @@
 
-# also using replit.com and irb to run things
-
-
-
-# FIXME - only works for lowercase phrases without spaces
 def caesar_cipher(phrase, shift_by)
 
-    alphabet = ("a".."z").to_a
-    phrase_arr = phrase.split("").to_a
+    words = phrase.split(" ").to_a
+    chars = phrase.split("").to_a
   
-    #puts phrase_arr
+    #puts "original chars: #{chars}"
+    
+    lowercase = ("a".."z").to_a
+    uppercase = ("A".."Z").to_a
   
-    phrase_arr.each do |letter|
-      original_position = alphabet.find_index(letter)
-      new_position = original_position + shift_by
-
-      # reset the positioning from z to a
-      if new_position > 25
-        new_position = new_position - 26
-        phrase_arr[original_position] = alphabet[new_position]
-      else 
-        phrase_arr[original_position] = alphabet[new_position]
+    chars.each_index do |i|
+  
+  
+      if lowercase.include?(chars[i]) == true
+        
+        old_pos = lowercase.find_index(chars[i])
+        
+        new_pos = old_pos + shift_by
+  
+        if new_pos > 25
+          new_pos = new_pos - 26
+        end
+  
+        chars[i] = lowercase[new_pos]
+        
       end
-
-      phrase = phrase_arr.join
+  
+  
+      if uppercase.include?(chars[i]) == true
+  
+        old_pos = uppercase.find_index(chars[i])
+  
+        new_pos = old_pos + shift_by
+  
+        if new_pos > 25
+          new_pos = new_pos - 26
+        end
+  
+        chars[i] = uppercase[new_pos]
+  
+      end
+  
+      phrase = chars.join   
+  
     end
+  
+  
+    #puts "ciphered chars: #{chars}"
   
     return phrase
   
-=begin
-- returns a string back
-- make sure the capitalization stays the same
-- make sure punctuation stays the same
-
-phrase.each do |letter|
-
-1. find desired letter in the alphabet array
-    - original_position = alphabet.find_index(i)
-
-2. find the new coded letter
-    - new_position = original_position + shift_by is the new letter
-
-3. if the new position is > 25
-     new_position - 26 should loop it back correctly
-
-4. replace the letter
-    phrase[original_position] = alphabet[new_position]
-
-
-=end
-    
-
-
 end
-
-=begin
-caesar_cipher("What a string!", 5)
-=> "Bmfy f xywnsl!"
-=end
+  
+  
+  #caesar_cipher("abc def!", 1)
+  # => bcd efg!
+  
+  caesar_cipher("abc Def!", 1)
+  # => bcd Efg!
+  
+  caesar_cipher("What a string!", 5)
+  # => "Bmfy f xywnsl!"
