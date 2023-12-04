@@ -31,16 +31,11 @@ def substrings(word, dictionary)
 
 =begin
 
+looking at other solutions 
 
------------------------ from basic enumerable methods section
-
-votes = ["Bob's Dirty Burger Shack", "St. Mark's Bistro", "Bob's Dirty Burger Shack"]
-
-votes.reduce(Hash.new(0)) do |result, vote|
-  result[vote] += 1
-  result
-end
-#=> {"Bob's Dirty Burger Shack"=>2, "St. Mark's Bistro"=>1}
+- I could've utilized the .scan method
+- I didn't need to do a loop within a loop to iterate through
+- want to find other more efficient ways to do this next time
 
 =end
 
