@@ -4,6 +4,8 @@ def stock_picker(stock_prices)
   
     min_buy = stock_prices[0]
     max_profit = 0
+
+    lowest_day = 0
   
   
     stock_prices.each_with_index do |price, day|
@@ -11,14 +13,14 @@ def stock_picker(stock_prices)
       if price < min_buy && price != stock_prices.last
   
         min_buy = price
-        best_pair[0] = day
+        lowest_day = day
   
       end
   
       if (price - min_buy) > max_profit
     
         max_profit = price - min_buy
-        best_pair[1] = day
+        best_pair = [lowest_day, day]
           
       end
     end
@@ -30,7 +32,7 @@ def stock_picker(stock_prices)
     
   end
   
-stock_picker([17,3,6,9,15,8,6,1,10, 1])
+#stock_picker([17,3,6,9,15,8,6,1,10, 1])
 #=> [1,4]  # for a profit of $15 - $3 == $12
 
 
