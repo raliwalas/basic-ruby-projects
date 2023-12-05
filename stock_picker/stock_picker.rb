@@ -1,31 +1,37 @@
+def stock_picker(stock_prices)
 
-def stock_picker(stocks)
-
+    best_pair = [0, 1]
+  
+    min_buy = stock_prices[0]
+    max_profit = 0
+  
+  
+    stock_prices.each_with_index do |price, day|
+  
+      if price < min_buy && price != stock_prices.last
+  
+        min_buy = price
+        best_pair[0] = day
+  
+      end
+  
+      if (price - min_buy) > max_profit
     
-
-end
-
-
-=begin
--------brainstorming-----
-
-- buy first, sell second number
-- do opposite of what I said before
-
-    sell value - buy value
-
-    - sell value can NOT be stock[0]
-    - buy value can NOT be the stock[-1]
-
-- needs to go through all of the stock price options
-
-- need logic to find which pair has the highest profit? compare profits
-
-- try to be more effient with the code this time!
-
-=end
-
-
+        max_profit = price - min_buy
+        best_pair[1] = day
+          
+      end
+    end
+  
+    #puts " "
+    puts "best_pair: #{best_pair}"
+  
+    #return best_pair
+    
+  end
+  
+  stock_picker([17,3,6,9,15,8,6,1,10])
+  #=> [1,4]  # for a profit of $15 - $3 == $12
 
 
 stock_picker([17,3,6,9,15,8,6,1,10])
