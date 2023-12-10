@@ -18,34 +18,56 @@ def bubble_sort(arr)
       n = arr.length - 1
   
       for i in 0..n do
+
+=begin
+----brainstorming-----
+
+n = arr.length
+
+for k in 1..n do
+
+    find the biggest element
+    find the index of the biggest element
+
+    if the max index != n
+        swap with the neighbor
+    end
+
+    then, decrease n 
+
+    n-=1 
+
+    i dont think i need to make it n - k 
+
+
+
+=end
   
-        puts i
-        puts "-----"
+        # puts i
+        # puts "-----"
   
-        max = arr[0..n].max
-        index = arr.find_index(max).to_i
-        neighbor = index + 1
+        # max = arr[0..n].max
+        # index = arr.find_index(max).to_i
+        # neighbor = index + 1
   
-        if max > arr[neighbor].to_i
-          arr[index], arr[neighbor] = arr[neighbor], arr[index] 
-        end
+        # if max > arr[neighbor].to_i
+        #   arr[index], arr[neighbor] = arr[neighbor], arr[index] 
+        # end
   
-        puts arr.inspect
-        puts n
+        # puts arr.inspect
+        # puts n
   
-        n -= 1
+        # n -= 1
   
         #answer = is_sorted?(arr)
         
       end
-  
-      #k +=1
-  
+    
       answer = is_sorted?(arr)
   
     end
   
-    puts " HELLOOOO "
+    #puts " HELLOOOO "
     puts arr.inspect
     
 end
