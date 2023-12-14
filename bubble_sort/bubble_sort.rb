@@ -1,100 +1,98 @@
 def bubble_sort(arr)
+  
+  answer = is_sorted?(arr)
 
+  # n is the number of elements in the array
+  # -1 to go from 0 to last element, not 1 to n -1
+  # this stays out of the while loop because we change the n inside the for loop 
+  n = arr.length - 1
 
-    #doing -1 because i want to go from 0..n in for loop
-    #k = 1
-  
-  
-    # n is the number of elements in the array
-    # -1 to go from 0 to last element, not 1 to n -1
-    n = arr.length - 1
-  
-    # k is the number of iterations 
+  while answer == false
+    
+    # check answer status after for loop is done each time
+    answer = is_sorted?(arr)
+    
+    
     for k in 0..n do
   
       max = arr[0..n].max
       max_index = arr.find_index(max).to_i
   
-      puts "n #{n}"
-      puts "k #{k}"
-      puts "max: #{max}"
-      puts "max_index: #{max_index}"
-      puts 
-      puts arr.inspect
-  
       if max_index != n
         neighbor = max_index + 1
         # if the largest number is not at the end of the array, swap it with it's neighbor
         arr[max_index], arr[neighbor] = arr[neighbor], arr[max_index]
-      #else 
-        #n-=1
       end
-  
+
+      # if the max number is in the last position, we want to check 0..n-1 in the next iteration
       if max_index == n
         n -= 1
-        puts "here"
       end
-  
-  
-      puts "----"
-  
-    end
-  
-  
-    puts " HELLOOOO "
-    puts arr.inspect
-  
+    end   
+  end 
+
+  return arr.inspect
+
 end
-  
-  
+
+
 =begin
 
 is_sorted? checks whether an is array is sorted or not and returns a boolean value
 
-If the last element of the array is not the maximum within the array, we automatically know that
-the array is not sorted. If it is, then remove that value and check that the new last value is the maximum. 
-
-If we end up with an array of length 1, we know the list was sorted, or the input was only length 1.
+It iterates through the array and checks if it's neighbor to its right is greater or not.
+If it is greater, we add 1 to the counter.
+If the counter remains at 0, we know that the list is sorted
 =end
 
-# def is_sorted?(arr)
+def is_sorted?(arr)
 
-#   copy = []
+  copy = arr.clone
+  
+  count = 0
+  add = 0
 
-#   # using clone because copy = arr will cause changes to the original arr
-#   copy = arr.clone
-
-#   sorted = false
-
-#   copy.each_with_index do |num, index|
-
-#     #dups = arr.count(num)
-
-#     #if 
+  copy.each_with_index do |num, index|
 
 
-#     if copy.last == copy.max
-#       copy.delete(copy.max)
-#       puts copy.inspect
+    if (num > copy[index+1].to_i) == true
+      add = 1
+    else
+      add = 0
+    end
 
-#     end
+    if (index+1) == copy.length
+      break
+    end
 
-#     if copy.length == 1
-#       sorted = true
-#     else 
-#       sorted = false
-#     end 
+    count = count + add
 
-#   end
+  end 
 
-#   puts sorted  
-# end
+  #puts count
 
-# #is_sorted?([1,2,3])
-# #is_sorted?([5,3,4,6,10])
-# #is_sorted?([4,3,78,2,0,2])
+  if count == 0
+    sorted = true
+  elsif count > 0
+    sorted = false
+  end
+
+  return sorted
+end
+
+#is_sorted?([2,1,1,3,5])
+#is_sorted?([1,1,1,2,2,3,3,4,5,5])
+#is_sorted?([4,3,78,2,0,2])
 # is_sorted?([0,2,2,3,4,78])
+#tester = is_sorted?([1,1,1,2,2,3,3,4,5,5])
+#puts tester
+
+# tester = is_sorted?([3,4,1])
+# puts tester
 
 #bubble_sort([3,4,1])
-bubble_sort([4,3,78,2,0,2])
+#bubble_sort([4,3,78,2,0,2])
 # => [0,2,2,3,4,78]
+
+tester = bubble_sort([4,3,78,2,0,2])
+puts tester
